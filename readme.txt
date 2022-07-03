@@ -37,6 +37,12 @@ Not at this point, but looking at adding that feature in the future.
 Not at this point, though possible in the future. The spirit of `#100DaysToOffload`
 is using your personal blog, though, where it's unlikely to have multiple users.
 
+= Should the metric be "100 posts in a year" or "100 unique days when something was posted"? =
+
+Yeah, the name and the spirit of the project might be open for multiple interpretations,
+but the [100DaysToOffload website](https://100daystooffload.com/#guidelines) is pretty
+clear on the former interpretation. In the future there might be more options to switch
+the plugin between these two or give you information according to either of them.
 
 == Screenshots ==
 
@@ -46,4 +52,4 @@ is using your personal blog, though, where it's unlikely to have multiple users.
 == Changelog ==
 
 = 0.1.0 =
-* Initial release to provide basic metrics.
+* Initial release to useful metrics.

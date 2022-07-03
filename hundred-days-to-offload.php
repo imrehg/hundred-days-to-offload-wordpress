@@ -12,9 +12,10 @@
  * License URI:       https://www.apache.org/licenses/LICENSE-2.0
  */
 
-function hudred_days_posts_page_html() {
+function hudred_days_posts_page_html(): void
+{
     // check user capabilities
-    if ( ! current_user_can( 'publish_posts' ) ) {
+    if (! current_user_can('publish_posts')) {
         return;
     }
 
@@ -43,39 +44,42 @@ function hudred_days_posts_page_html() {
     $post_count = $query->found_posts;
     $post_count_text = $post_count . " " . ngettext('post', 'posts', $post_count);
 
-    if ( $query->have_posts() ) {
+    if ($query->have_posts()) {
         # Get the first post
         $query->the_post();
+        $have_posts = true;
         $oldest_date = get_the_date();
-    }
-
-    ?>
+    } else {
+        $have_posts = false;
+    } ?>
     <div class="wrap">
-        <h1><?php echo esc_html( get_admin_page_title() ); ?></h1>
+        <h1><?php echo esc_html(get_admin_page_title()); ?></h1>
         <p>
-        <?php 
-            #TODO: This is not correctly translatable just yet
-            echo "Found $post_count_text in the interval from $cutoff_date to today.";
-        ?>
         <?php
             #TODO: This is not correctly translatable just yet
-            if ($post_count >= $target_count) {
-                echo "You've achieved <a href=\"https://100daystooffload.com/\">#100DaysOfOffload!</a> 🎉";
-            } else {
-                $required_count = $target_count - $post_count;
-                echo "Still need to publish $required_count " . ngettext('post', 'posts', $required_count). " ⌨️.";
-            }
-        ?>
+            echo "Found $post_count_text in the interval from $cutoff_date to today.";
+
+    #TODO: This is not correctly translatable just yet
+    if ($post_count >= $target_count) {
+        echo "You've achieved <a href=\"https://100daystooffload.com/\">#100DaysOfOffload!</a> 🎉";
+    } else {
+        $required_count = $target_count - $post_count;
+        echo "Still need to publish $required_count " . ngettext('post', 'posts', $required_count). " ⌨️.";
+    }
+
+    if ($have_posts) {
+        echo "The oldest post in interval is from $oldest_date.";
+    } ?>
         </p>
     </div>
     <?php
 }
 
-function hundred_days_options_page()
+function hundred_days_options_page(): void
 {
     add_posts_page(
-        __( 'Hundred Days to Offload Progress', 'textdomain' ),
-        __( 'Hundred Days to Offload', 'textdomain' ),
+        __('Hundred Days to Offload Progress', 'textdomain'),
+        __('Hundred Days to Offload', 'textdomain'),
         'publish_posts',
         'hundreddays',
         'hudred_days_posts_page_html'
