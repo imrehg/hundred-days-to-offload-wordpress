@@ -3,7 +3,7 @@
     "description": "Wordpress plugin for the 100DaysToOffload project.",
     "type": "wordpress-plugin",
     "require": {
-        "php": "^7.2 || ^8.0"
+        "php": "^7.0 || ^8.0"
     },
     "require-dev": {
         "php-stubs/wordpress-stubs": "^6.0.0",
