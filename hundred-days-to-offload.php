@@ -19,10 +19,11 @@ function hudred_days_posts_page_html(): void
         return;
     }
 
+    $date_format = "Y-m-d";
     # Calculate relevant time intervals
-    $cutoff_date = date("Y-m-d", strtotime("-1 year"));
+    $cutoff_date = date($date_format, strtotime("-1 year"));
     #TODO: today's date might not be needed, as post publish days are only in the past?
-    $today_date = date("Y-m-d", getdate());
+    $today_date = date($date_format, getdate());
 
     $target_count = 100;
 
@@ -48,7 +49,7 @@ function hudred_days_posts_page_html(): void
         # Get the first post
         $query->the_post();
         $have_posts = true;
-        $oldest_date = get_the_date();
+        $oldest_date = get_the_date($date_format);
     } else {
         $have_posts = false;
     } ?>
@@ -58,19 +59,27 @@ function hudred_days_posts_page_html(): void
         <?php
             #TODO: This is not correctly translatable just yet
             echo "Found $post_count_text in the interval from $cutoff_date to today.";
+        ?>
 
-    #TODO: This is not correctly translatable just yet
-    if ($post_count >= $target_count) {
-        echo "You've achieved <a href=\"https://100daystooffload.com/\">#100DaysOfOffload!</a> 🎉";
-    } else {
-        $required_count = $target_count - $post_count;
-        echo "Still need to publish $required_count " . ngettext('post', 'posts', $required_count). " ⌨️.";
-    }
-
-    if ($have_posts) {
-        echo "The oldest post in interval is from $oldest_date.";
-    } ?>
+        <p>
+        <?php
+        #TODO: This is not correctly translatable just yet
+        if ($post_count >= $target_count) {
+            echo "You've achieved <a href=\"https://100daystooffload.com/\">#100DaysOfOffload!</a> 🎉";
+        } else {
+            $required_count = $target_count - $post_count;
+            echo "Still need to publish $required_count " . ngettext('post', 'posts', $required_count). " ⌨️.";
+        }
+        ?>
         </p>
+
+        <?php if ($have_posts): ?>
+        <p>
+            <?php echo "The oldest post in interval is from $oldest_date." ?>
+        </p>
+        <?php endif; ?>
+
+
     </div>
     <?php
 }
