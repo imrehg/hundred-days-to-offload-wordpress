@@ -58,8 +58,7 @@ function hudred_days_posts_page_html(): void
         <p>
         <?php
             #TODO: This is not correctly translatable just yet
-            echo "Found $post_count_text in the interval from $cutoff_date to today.";
-        ?>
+            echo "Found $post_count_text in the interval from $cutoff_date to today."; ?>
 
         <p>
         <?php
@@ -69,8 +68,7 @@ function hudred_days_posts_page_html(): void
         } else {
             $required_count = $target_count - $post_count;
             echo "Still need to publish $required_count " . ngettext('post', 'posts', $required_count). " ⌨️.";
-        }
-        ?>
+        } ?>
         </p>
 
         <?php if ($have_posts): ?>
