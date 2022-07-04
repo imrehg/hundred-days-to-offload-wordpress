@@ -2,13 +2,21 @@
     "name": "imrehg/hundred-days-to-offload-wordpress",
     "description": "Wordpress plugin for the 100DaysToOffload project.",
     "type": "wordpress-plugin",
+    "support": {
+        "issues": "https://github.com/imrehg/hundred-days-to-offload-wordpress/issues",
+        "source": "https://github.com/imrehg/hundred-days-to-offload-wordpress"
+    },
+    "minimum-stability": "dev",
     "require": {
-        "php": "^7.0 || ^8.0"
+        "php": "^7.2 || ^8.0"
     },
     "require-dev": {
         "php-stubs/wordpress-stubs": "^6.0.0",
+        "phpstan/phpstan": "^1.7",
         "szepeviktor/phpstan-wordpress": "^1.1",
-        "paragonie/sodium_compat": "^1.17"
+        "paragonie/sodium_compat": "^1.17",
+        "wp-coding-standards/wpcs": "dev-develop as 3.0.0",
+        "phpcompatibility/phpcompatibility-wp": "^2.1"
     },
     "license": "Apache-2.0",
     "authors": [
@@ -16,5 +24,19 @@
             "name": "Gergely Imreh",
             "email": "gergely@imreh.net"
         }
-    ]
+    ],
+    "scripts": {
+		"test": "vendor/bin/phpstan analyze --ansi --memory-limit=256M",
+        "check-cs": [
+            "vendor/bin/phpcs --standard=WordPress hundred-days-to-offload.php"
+        ],
+        "fix-cs": [
+            "php ./vendor/bin/phpcbf --standard=WordPress hundred-days-to-offload.php"
+        ]
+	},
+    "config": {
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
+    }
 }
