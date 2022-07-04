@@ -32,6 +32,12 @@
         ],
         "fix-cs": [
             "php ./vendor/bin/phpcbf --standard=WordPress hundred-days-to-offload.php"
+        ],
+        "package": [
+            "zip -r hundred-days-to-offload-wordpress.zip hundred-days-to-offload.php readme.txt assets"
+        ],
+        "clear-package": [
+            "rm hundred-days-to-offload-wordpress.zip"
         ]
 	},
     "config": {

@@ -1,2 +1,5 @@
 /vendor/
 .php-cs-fixer.cache
+
+# Packaged files
+hundred-days-to-offload-wordpress.zip
