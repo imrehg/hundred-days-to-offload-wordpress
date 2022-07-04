@@ -46,8 +46,7 @@ the plugin between these two or give you information according to either of them
 
 ## Screenshots
 
-1. This screen shot description corresponds to screenshot-1.(png|jpg|jpeg|gif). Screenshots are stored in the /assets directory.
-2. This is the second screen shot
+1. Dashboard view of the plugin in action.
 
 ## Changelog
 
