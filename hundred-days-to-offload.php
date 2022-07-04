@@ -23,7 +23,7 @@ function hudred_days_posts_page_html(): void
     # Calculate relevant time intervals
     $cutoff_date = date($date_format, strtotime("-1 year"));
     #TODO: today's date might not be needed, as post publish days are only in the past?
-    $today_date = date($date_format, getdate());
+    $today_date = date($date_format, getdate()[0]);
 
     $target_count = 100;
 
