@@ -1,0 +1,8 @@
+#$ vendor/bin/phpstan analyze
+
+includes:
+    - vendor/szepeviktor/phpstan-wordpress/extension.neon
+parameters:
+    level: max
+    paths:
+        - hundred-days-to-offload.php
